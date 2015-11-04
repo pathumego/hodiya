@@ -31,30 +31,17 @@
 			<thead>
 				<tr>
 					<th class="text-center">Code</th>
-					<th class="text-center">්</th>
-					<th class="text-center">අ</th>
-					<th class="text-center">ආ</th>
-					<th class="text-center">ඇ</th>
-					<th class="text-center">ඈ</th>
-					<th class="text-center">ඉ</th>
-					<th class="text-center">ඊ</th>
-					<th class="text-center">උ</th>
-					<th class="text-center">ඌ</th>
-					<th class="text-center">ඍ</th>
-					<th class="text-center">ඎ</th>
-					<th class="text-center">ඏ</th>
-					<th class="text-center">ඐ</th>
-					<th class="text-center">එ</th>
-					<th class="text-center">ඒ</th>
-					<th class="text-center">ඓ</th>
-					<th class="text-center">ඔ</th>
-					<th class="text-center">ඕ</th>
-					<th class="text-center">ඖ</th>
-					<th class="text-center">අං</th>
-					<th class="text-center">අඃ</th>
-					<th class="text-center">ර්+</th>
-					<th class="text-center">්+ර</th>
-					<th class="text-center">්+ය</th>
+					<th class="text-center">ަ	 	<br>THAANA ABAFILI</th>
+<th class="text-center">ާ	 <br>	THAANA AABAAFILI</th>
+<th class="text-center">ި	 	<br>THAANA IBIFILI</th>
+<th class="text-center">ީ	  <br>	THAANA EEBEEFILI</th>
+<th class="text-center">ު	 	<br>THAANA UBUFILI</th>
+<th class="text-center">ޫ	 	<br>THAANA OOBOOFILI</th>
+<th class="text-center">ެ	 	<br><br>THAANA EBEFILI</th>
+<th class="text-center">ޭ	 	<br>THAANA EYBEYFILI</th>
+<th class="text-center">ޮ	 	<br>THAANA OBOFILI</th>
+<th class="text-center">ޯ	 	<br>THAANA OABOAFILI</th>
+<th class="text-center">ް	  	<br>THAANA SUKUN</th>
 				</tr>
 			</thead>
 			<tbody id="hodiya-table"></tbody>
@@ -69,8 +56,8 @@
 	var conson = [
 	"ހ", "ށ", "ނ", "ރ", "ބ", "ޅ",
 	"ކ", "އ", "ވ", "މ", "ފ", "ދ", "ތ", "ލ", 
-	"ގ", "ޏ", "ސ", "ޑ", "ޒ", "ޓ", "ޔ", "ޕ", "ޖ", "ޗ", "ޘ", "ޙ", "
-	ޚ", "ޛ", "ޜ", "ޝ", "ޞ", "ޟ", "ޠ", "ޡ", "ޢ", "ޣ", "ޤ", "ޥ"];
+	"ގ", "ޏ", "ސ", "ޑ", "ޒ", "ޓ", "ޔ", "ޕ", "ޖ", "ޗ", "ޘ", "ޙ", 
+        "ޚ", "ޛ", "ޜ", "ޝ", "ޞ", "ޟ", "ޠ", "ޡ", "ޢ", "ޣ", "ޤ", "ޥ"];
 	var tbody = document.getElementById('hodiya-table');
 	var trow, tcell;
 	
@@ -108,9 +95,6 @@
 				}
 			}
 			
-			tableCell('ර' + String.fromCodePoint(vowels[0]) + String.fromCodePoint(0x200d) + conson[i]);
-			tableCell(conson[i] + String.fromCodePoint(vowels[0]) + String.fromCodePoint(0x200d) + 'ර');
-			tableCell(conson[i] + String.fromCodePoint(vowels[0]) + String.fromCodePoint(0x200d) + 'ය');
 			
 			tbody.appendChild(trow);
 		}

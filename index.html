@@ -14,9 +14,9 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <style>
         .popover-content {
@@ -31,35 +31,35 @@
 
 <body>
     <div class="container">
-        <h1>හෝඩිය <small><a href="https://github.com/janithl/hodiya">View Source</a></small></h1>
+        <h1>އަކުރު <small><a href="https://github.com/janithl/hodiya">View Source</a></small></h1>
 
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th class="text-center">Code</th>
-                    <th class="text-center">ަ
-                        <br>THAANA ABAFILI</th>
-                    <th class="text-center">ާ
-                        <br> THAANA AABAAFILI</th>
-                    <th class="text-center">ި
-                        <br>THAANA IBIFILI</th>
-                    <th class="text-center">ީ
-                        <br> THAANA EEBEEFILI</th>
-                    <th class="text-center">ު
-                        <br>THAANA UBUFILI</th>
-                    <th class="text-center">ޫ
-                        <br>THAANA OOBOOFILI</th>
+                    <th class="text-center">ް
+                        <br>SUKUN</th>
+                    <th class="text-center">ޮ
+                        <br>OBOFILI</th>
+                    <th class="text-center">ޯ
+                        <br>OABOAFILI</th>
+                    <th class="text-center">ޭ
+                        <br>EYBEYFILI</th>
                     <th class="text-center">ެ
                         <br>
-                        <br>THAANA EBEFILI</th>
-                    <th class="text-center">ޭ
-                        <br>THAANA EYBEYFILI</th>
-                    <th class="text-center">ޮ
-                        <br>THAANA OBOFILI</th>
-                    <th class="text-center">ޯ
-                        <br>THAANA OABOAFILI</th>
-                    <th class="text-center">ް
-                        <br>THAANA SUKUN</th>
+                        <br>EBEFILI</th>
+                    <th class="text-center">ޫ
+                        <br>OOBOOFILI</th>
+                    <th class="text-center">ު
+                        <br>UBUFILI</th>
+                    <th class="text-center">ީ
+                        <br> EEBEEFILI</th>
+                    <th class="text-center">ި
+                        <br>IBIFILI</th>
+                    <th class="text-center">ާ
+                        <br> AABAAFILI</th>
+                    <th class="text-center">ަ
+                        <br>ABAFILI</th>
                 </tr>
             </thead>
             <tbody id="hodiya-table"></tbody>
@@ -71,12 +71,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
-        var vowels = [0x07A6, 0x07A7, 0x07A8, 0x07A9, 0x07AA, 0x07AB, 0x07AC, 0x07AD, 0x07AE, 0x07AF, 0x07B0, 0x07B1];
+        var vowels = [0x07B0, 0x07AF, 0x07AE, 0x07AD, 0x07AC, 0x07AB, 0x07AA, 0x07A9, 0x07A8, 0x07A7, 0x07A6, 0x0020];
         var conson = [
  "ހ", "ށ", "ނ", "ރ", "ބ", "ޅ",
  "ކ", "އ", "ވ", "މ", "ފ", "ދ", "ތ", "ލ",
  "ގ", "ޏ", "ސ", "ޑ", "ޒ", "ޓ", "ޔ", "ޕ", "ޖ", "ޗ", "ޘ", "ޙ",
         "ޚ", "ޛ", "ޜ", "ޝ", "ޞ", "ޟ", "ޠ", "ޡ", "ޢ", "ޣ", "ޤ", "ޥ"];
+        // sukun is only used with އ,ސ,ނ,ތ,ށ :: alif, seenu, noonu, thaa, shaviyani
+        // var sukunLetters = ["އ","ސ","ނ","ތ","ށ"];
+        var sukunLetters = [ 1927, 1936, 1922, 1932, 1921 ];
         var tbody = document.getElementById('hodiya-table');
         var trow, tcell;
 
@@ -86,11 +89,23 @@
             if (title) {
                 tcell.innerHTML = '<strong>' + c + '</strong>';
             } else {
-                tcell.innerHTML = '<a tabindex="0" role="button" data-toggle="popover" ' +
-                    'data-trigger="focus" data-placement="bottom" title="U+0' +
-                    c.charCodeAt(0).toString(16).toUpperCase() + (isNaN(c.charCodeAt(1)) ? '' :
-                        (' & U+0' + c.charCodeAt(1).toString(16).toUpperCase())) + '" data-content="' +
-                    c + '">' + c + '</a>';
+                tcell_make = '<a tabindex="0" role="button" data-toggle="popover" ' +
+                    'data-trigger="focus" data-placement="bottom" title="U+0';
+
+                tcell_make += c.charCodeAt(0).toString(16).toUpperCase();
+                if( !isNaN(c.charCodeAt(1)) ) {
+                    if('1968' == c.charCodeAt(1)) {
+                        if( sukunLetters.indexOf(c.charCodeAt(0)) > -1 ) {
+                            tcell_make += (' & U+0' + c.charCodeAt(1).toString(16).toUpperCase());
+                            tcell_make += '" data-content="' + c + '">' + c + '</a>';
+                        }
+                    } else {
+                        tcell_make += (' & U+0' + c.charCodeAt(1).toString(16).toUpperCase());
+                        tcell_make += '" data-content="' + c + '">' + c + '</a>';
+                    }
+                }
+
+                tcell.innerHTML = tcell_make;
             }
             trow.appendChild(tcell);
         }
